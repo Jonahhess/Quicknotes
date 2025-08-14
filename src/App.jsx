@@ -1,18 +1,21 @@
 import { useState } from "react";
-import "./App.css";
 import Note from "./Note";
 import Notelist from "./Notelist";
+import "./App.css";
 
 function App() {
   const [notes, setNotes] = useState([]);
 
-  function addNote(note) {
-    if (note.has("date")) setNotes([note, ...notes]);
+  function addNote(text) {
+    if (text) {
+      setNotes([{ text, date: Date.now() }, ...notes]);
+    }
   }
 
-  function removeNote(note) {
-    return setNotes(notes.filter((n) => n !== note));
+  function removeNote(date) {
+    return setNotes(notes.filter((n) => n.date !== date));
   }
+
   return (
     <>
       <Note addNoteToList={addNote}></Note>
