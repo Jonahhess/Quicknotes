@@ -1,3 +1,6 @@
+#note-list {
+  display: flex;
+}
 .note {
   display: flex;
   align-items: center;
