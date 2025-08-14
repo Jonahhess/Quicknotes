@@ -7,7 +7,6 @@ export default function Note({ addNoteToList }) {
 
   const updateNote = (event) => {
     if (!note.has(event.target.name)) {
-      console.log(`${note} missing ${event.target.name} property`);
       return;
     }
     setNote(
