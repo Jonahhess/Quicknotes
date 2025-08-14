@@ -2,9 +2,6 @@
   display: flex;
 }
 .note {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Optional: pushes button to far right */
   padding: 8px;
   margin: 8px;
   outline: 2px solid black;
