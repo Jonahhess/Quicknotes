@@ -7,7 +7,7 @@ function App() {
   const [notes, setNotes] = useState([]);
 
   function addNote(note) {
-    setNotes([note, ...notes]);
+    if (note.has("date")) setNotes([note, ...notes]);
   }
 
   function removeNote(note) {
@@ -15,7 +15,7 @@ function App() {
   }
   return (
     <>
-      <Note addNote={addNote}></Note>
+      <Note addNoteToList={addNote}></Note>
       <Notelist notes={notes} removeNote={removeNote}></Notelist>
     </>
   );
