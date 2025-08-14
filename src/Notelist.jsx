@@ -1,19 +1,32 @@
+import { useState } from "react";
+
 export default function Notelist({ notes, removeNote }) {
-  return notes.map((note, index) => (
-    <div key={index} id={`note-${index}`} className="note">
-      <button
-        id={`remove-${index}`}
-        onClick={() => removeNote(note)}
-        className="remove-btn"
-      >
-        x
-      </button>
-      <p className="text" id={`text-${index}`}>
-        {note.get(text)}
-      </p>
-      <p className="date" id={`date-${index}`}>
-        {note.get(date)}
-      </p>
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+  return (
+    <div id="note-list">
+      {notes?.map(({ text, date }, index) => (
+        <div
+          key={date}
+          id={`note-${index}`}
+          className="note"
+          onMouseEnter={() => setHoveredIndex(index)}
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          <p className="text" id={`text-${index}`}>
+            {text}
+          </p>
+          <button
+            id={`remove-${index}`}
+            onClick={() => removeNote(date)}
+            className="remove-btn"
+            style={{
+              visibility: hoveredIndex === index ? "visible" : "hidden",
+            }}
+          >
+            X
+          </button>
+        </div>
+      ))}
     </div>
-  ));
+  );
 }
