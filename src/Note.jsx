@@ -1,39 +1,28 @@
 import { useState } from "react";
-import InsertionOrderObject from "./InsertionOrderObject";
 
 export default function Note({ addNoteToList }) {
-  const data = new InsertionOrderObject([["text", ""]]);
-  const [note, setNote] = useState(data);
-
-  const updateNote = (event) => {
-    if (!note.has(event.target.name)) {
-      return;
-    }
-    setNote(
-      new InsertionOrderObject([
-        ...note.entries(),
-        [event.target.name, event.target.value],
-        ["date", new Date()],
-      ])
-    );
-  };
+  const [text, setText] = useState("");
 
   return (
     <>
       <h1>Note Settings</h1>
-      {note.map(([key, value]) => (
-        <div key={key} id={key} className="note-prop">
-          <label htmlFor={key}>{key}</label>
-          <input
-            type="text"
-            id={key}
-            name={key}
-            value={value}
-            onChange={updateNote}
-          />
-        </div>
-      ))}
-      <button id="submit" onClick={() => addNoteToList(note)}>
+      <div id="note-text">
+        <label htmlFor="text">Text</label>
+        <input
+          id="text"
+          type="text"
+          placeholder="enter text"
+          value={text}
+          onChange={(e) => setText(e.target.value)}
+        ></input>
+      </div>
+      <button
+        id="submit"
+        onClick={() => {
+          addNoteToList(text);
+          setText("");
+        }}
+      >
         Add Note
       </button>
     </>
