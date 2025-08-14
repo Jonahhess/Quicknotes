@@ -1,9 +1,16 @@
-.note .remove-btn {
-  display: none;
-  position: absolute;
-  top: 0;
-  right: 0;
+.note {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Optional: pushes button to far right */
+  padding: 8px;
+  margin: 8px;
+  outline: 2px solid black;
+  width: max-content;
+  position: relative;
 }
-.note:hover .remove-btn {
-  display: initial;
+
+.remove-btn {
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
