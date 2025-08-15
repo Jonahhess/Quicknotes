@@ -1,8 +1,9 @@
 import { useState } from "react";
 
-export default function ModalNote({ title, text, date, updateNote }) {
+export default function ModalNote({ title, text, date, updateNote, category }) {
   const [newTitle, setNewTitle] = useState(title);
   const [newText, setNewText] = useState(text);
+  const [newCategory, setNewCategory] = useState(category);
   return (
     <div id="new-note" className="floating">
       <input
@@ -19,11 +20,32 @@ export default function ModalNote({ title, text, date, updateNote }) {
           onChange={(e) => setNewText(e.target.value)}
           rows="10"
         ></textarea>
+        <div id="category-container">
+          <label htmlFor="categories">Category</label>
+          <select
+            name="categories"
+            id="categories"
+            value={category}
+            onChange={(e) => setNewCategory(e.target.value)}
+          >
+            <option value=""></option>
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="reminder">Reminder</option>
+            <option value="todo">Todo</option>
+          </select>
+        </div>
       </div>
       <button
         id="submit"
         onClick={() => {
-          newText && updateNote({ title: newTitle, text: newText, date });
+          newText &&
+            updateNote({
+              title: newTitle,
+              text: newText,
+              category: newCategory,
+              date,
+            });
         }}
         style={{ backgroundColor: newText ? "white" : "lightgrey" }}
       >
