@@ -1,32 +1,31 @@
 import { useState } from "react";
 
-export default function ModalNote({ addNoteToList }) {
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
-
+export default function ModalNote({ title, text, date, updateNote }) {
+  const [newTitle, setNewTitle] = useState(title);
+  const [newText, setNewText] = useState(text);
   return (
     <div id="new-note" className="floating">
       <input
         id="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        value={newTitle}
+        onChange={(e) => setNewTitle(e.target.value)}
         placeholder="Title"
       ></input>
       <div id="note-text">
         <textarea
           id="text"
           placeholder="enter text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
+          value={newText}
+          onChange={(e) => setNewText(e.target.value)}
           rows="10"
         ></textarea>
       </div>
       <button
         id="submit"
         onClick={() => {
-          addNoteToList({ title, text });
-          setText("");
-          setTitle("");
+          updateNote({ title, text });
+          setNewTitle("");
+          setNewText("");
         }}
       >
         Add Note
