@@ -1,4 +1,5 @@
 import { useState } from "react";
+import categories from "./categories";
 
 export default function NewNote({ addNoteToList }) {
   const [title, setTitle] = useState("");
@@ -29,11 +30,11 @@ export default function NewNote({ addNoteToList }) {
             value={category}
             onChange={(e) => setCategory(e.target.value)}
           >
-            <option value=""></option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="reminder">Reminder</option>
-            <option value="todo">Todo</option>
+            {categories.map((c) => (
+              <option value={c}>
+                {c.charAt(0).toUpperCase() + c.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
       </div>
