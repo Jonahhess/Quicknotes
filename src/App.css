@@ -24,6 +24,10 @@ button {
   margin-bottom: 30px;
 }
 
+#title {
+  width: 100%;
+}
+
 #text {
   border-color: lightgray;
   border-radius: 5px;
@@ -51,9 +55,14 @@ button {
   margin: 8px;
   position: relative;
   width: 150px;
-  height: 80px;
+  height: 90px;
   overflow: hidden;
   padding-top: 0px;
+}
+
+.title {
+  width: 100px;
+  font-size: large;
 }
 
 .date {
