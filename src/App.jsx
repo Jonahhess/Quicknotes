@@ -45,9 +45,9 @@ function App() {
     setSelectedNote(null);
   }
 
-  function addNote({ title, text }) {
-    if (text) {
-      setNotes([{ title, text, date: Date.now() }, ...notes]);
+  function addNote(note) {
+    if (note.text) {
+      setNotes([{ ...note, date: Date.now() }, ...notes]);
     }
   }
 
