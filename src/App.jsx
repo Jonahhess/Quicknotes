@@ -40,14 +40,12 @@ function App() {
   }
 
   function updateNote(note) {
-    if (note.title || note.text) {
-      const index = notes.findIndex((n) => n.date === note.date);
-      setNotes([
-        ...notes.slice(0, index),
-        { ...note, updatedDate: Date.now() },
-        ...notes.slice(index + 1),
-      ]);
-    }
+    const index = notes.findIndex((n) => n.date === note.date);
+    setNotes([
+      ...notes.slice(0, index),
+      { ...note, updatedDate: Date.now() },
+      ...notes.slice(index + 1),
+    ]);
   }
 
   return (
