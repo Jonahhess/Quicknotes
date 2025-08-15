@@ -33,22 +33,26 @@ export default function Note({
     >
       <div>
         <p id={`date-${index}`} className="date">
-          {new Date(date).toLocaleString("default", {
-            month: "short",
-            day: "numeric",
-            hour: "numeric",
-            minute: "numeric",
-          })}
+          {"Created: ".concat(
+            new Date(date).toLocaleString("default", {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            })
+          )}
         </p>
         {
           <p id={`update-date-${index}`} className="date">
             {updatedDate &&
-              new Date(updatedDate).toLocaleString("default", {
-                month: "short",
-                day: "numeric",
-                hour: "numeric",
-                minute: "numeric",
-              })}
+              "Updated: ".concat(
+                new Date(updatedDate).toLocaleString("default", {
+                  month: "short",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                })
+              )}
           </p>
         }
         <h1 className="title" id={`title-${index}`}>
