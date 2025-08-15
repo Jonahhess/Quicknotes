@@ -12,6 +12,14 @@ export default function Notelist({ notes, removeNote }) {
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
+          <p id={`date-${index}`} className="date">
+            {new Date(date).toLocaleString("default", {
+              month: "short",
+              day: "numeric",
+              hour: "numeric",
+              minute: "numeric",
+            })}
+          </p>
           <p className="text" id={`text-${index}`}>
             {text}
           </p>
