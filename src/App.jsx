@@ -21,9 +21,11 @@ Modal.setAppElement("#root");
 function App() {
   const [notes, setNotes] = useState([]);
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [selectedNote, setSelectedNote] = useState({});
   let subtitle;
 
-  function openModal() {
+  function openModal(note) {
+    setSelectedNote({ ...note });
     setIsOpen(true);
   }
 
@@ -66,16 +68,8 @@ function App() {
             style={customStyles}
             contentLabel="Example Modal"
           >
-            <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Hello</h2>
             <button onClick={closeModal}>close</button>
-            <div>I am a modal</div>
-            <form>
-              <input />
-              <button>tab navigation</button>
-              <button>stays</button>
-              <button>inside</button>
-              <button>the modal</button>
-            </form>
+            <Notelist notes={[selectedNote]} />
           </Modal>
         </div>
       )}
