@@ -23,7 +23,7 @@ export default function ModalNote({ title, text, date, updateNote }) {
       <button
         id="submit"
         onClick={() => {
-          updateNote({ newTitle, newText, date });
+          updateNote({ title: newTitle, text: newText, date });
         }}
       >
         Update Note
