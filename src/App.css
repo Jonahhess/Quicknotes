@@ -50,10 +50,15 @@ button {
   padding: 8px;
   margin: 8px;
   position: relative;
-  width: 100px;
+  width: 150px;
   height: 80px;
   overflow: hidden;
   padding-top: 0px;
+}
+
+.date {
+  color: grey;
+  font-size: 11px;
 }
 
 .remove-btn {
