@@ -1,4 +1,5 @@
 import { useState } from "react";
+import categories from "./categories";
 
 export default function ModalNote({ title, text, date, updateNote, category }) {
   const [newTitle, setNewTitle] = useState(title);
@@ -25,14 +26,14 @@ export default function ModalNote({ title, text, date, updateNote, category }) {
           <select
             name="categories"
             id="categories"
-            value={category}
+            value={newCategory}
             onChange={(e) => setNewCategory(e.target.value)}
           >
-            <option value=""></option>
-            <option value="personal">Personal</option>
-            <option value="work">Work</option>
-            <option value="reminder">Reminder</option>
-            <option value="todo">Todo</option>
+            {categories.map((c) => (
+              <option value={c}>
+                {c.charAt(0).toUpperCase() + c.slice(1)}
+              </option>
+            ))}
           </select>
         </div>
       </div>
