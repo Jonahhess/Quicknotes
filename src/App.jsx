@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from "react";
 import NewNote from "./NewNote";
 import Notelist from "./Notelist";
 import ModalContainer from "./ModalContainer";
+import SearchBar from "./SearchBar";
+import Filters from "./Filters";
 
 import "./App.css";
-import SearchBar from "./SearchBar";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -62,6 +63,10 @@ function App() {
     <>
       <SearchBar query={query} setQuery={setQuery} />
       <NewNote addNoteToList={addNote}></NewNote>
+      <Filters
+        categoryFilters={categoryFilters}
+        setCategoryFilters={setCategoryFilters}
+      />
       <Notelist
         notes={notes
           .filter((n) => !categoryFilters.includes(n.category))
