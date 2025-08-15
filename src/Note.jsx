@@ -13,7 +13,7 @@ export default function Note({
   const [hovered, setHovered] = useState(false);
 
   const colorMap = {
-    "": "white",
+    uncategorized: "white",
     personal: "yellow",
     work: "brown",
     reminder: "red",
