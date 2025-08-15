@@ -23,10 +23,9 @@ export default function ModalNote({ title, text, date, updateNote }) {
       <button
         id="submit"
         onClick={() => {
-          (newTitle || newText) &&
-            updateNote({ title: newTitle, text: newText, date });
+          newText && updateNote({ title: newTitle, text: newText, date });
         }}
-        style={{ backgroundColor: newTitle || newText ? "white" : "lightgrey" }}
+        style={{ backgroundColor: newText ? "white" : "lightgrey" }}
       >
         Update Note
       </button>
