@@ -1,6 +1,6 @@
 import categories from "./categories";
 
-export default function Filters(categoryFilters, setCategoryFilters) {
+export default function Filters({ categoryFilters, setCategoryFilters }) {
   return (
     <div
       id="filters"
@@ -8,7 +8,7 @@ export default function Filters(categoryFilters, setCategoryFilters) {
     >
       {categories.map((c) => (
         <div key={c}>
-          <label htmlFor={`checkbox-${c}`}>{c || "uncategorized"}</label>
+          <label htmlFor={`checkbox-${c}`}>{c}</label>
           <input
             type="checkbox"
             id={`checkbox-${c}`}
