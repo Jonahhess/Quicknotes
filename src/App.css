@@ -8,6 +8,10 @@ button {
   cursor: pointer;
 }
 
+#clear-query {
+  margin-left: 12px;
+}
+
 .floating {
   border-color: lightgray;
   border-radius: 10px;
@@ -48,6 +52,7 @@ button {
 
 #note-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .note {
