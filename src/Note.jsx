@@ -5,11 +5,20 @@ export default function Note({
   text,
   date,
   updatedDate,
+  category,
   index = 0,
   removeNote,
   openModal,
 }) {
   const [hovered, setHovered] = useState(false);
+
+  const colorMap = {
+    "": "white",
+    personal: "yellow",
+    work: "brown",
+    reminder: "red",
+    todo: "green",
+  };
 
   return (
     <div
@@ -18,6 +27,7 @@ export default function Note({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onClick={() => openModal && openModal({ title, text, date, index })}
+      style={{ backgroundColor: colorMap[category] }}
     >
       <div>
         <p id={`date-${index}`} className="date">
