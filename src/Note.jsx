@@ -4,6 +4,7 @@ export default function Note({
   title,
   text,
   date,
+  updatedDate,
   index = 0,
   removeNote,
   openModal,
@@ -27,6 +28,17 @@ export default function Note({
             minute: "numeric",
           })}
         </p>
+        {
+          <p id={`update-date-${index}`} className="date">
+            {updatedDate &&
+              new Date(updatedDate).toLocaleString("default", {
+                month: "short",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+              })}
+          </p>
+        }
         <h1 className="title" id={`title-${index}`}>
           {title}
         </h1>
