@@ -26,7 +26,9 @@ export default function Note({
       className="note floating"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      onClick={() => openModal && openModal({ title, text, date, index })}
+      onClick={() =>
+        openModal && openModal({ title, text, date, category, index })
+      }
       style={{ backgroundColor: colorMap[category] }}
     >
       <div>
