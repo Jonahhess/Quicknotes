@@ -1,36 +1,54 @@
 import { useState } from "react";
 
-export default function Note({ addNoteToList }) {
-  const [title, setTitle] = useState("");
-  const [text, setText] = useState("");
+export default function Note({
+  title,
+  text,
+  date,
+  index = 0,
+  removeNote,
+  openModal,
+}) {
+  const [hovered, setHovered] = useState(false);
 
   return (
-    <div id="new-note" className="floating">
-      <input
-        id="title"
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-      ></input>
-      <div id="note-text">
-        <textarea
-          id="text"
-          placeholder="enter text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          rows="10"
-        ></textarea>
+    <div
+      id={`note-${index}`}
+      className="note floating"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      onClick={() => openModal && openModal({ title, text, date, index })}
+    >
+      <div>
+        <p id={`date-${index}`} className="date">
+          {new Date(date).toLocaleString("default", {
+            month: "short",
+            day: "numeric",
+            hour: "numeric",
+            minute: "numeric",
+          })}
+        </p>
+        <h1 className="title" id={`title-${index}`}>
+          {title}
+        </h1>
+        <p className="text" id={`text-${index}`}>
+          {text}
+        </p>
       </div>
-      <button
-        id="submit"
-        onClick={() => {
-          addNoteToList({ title, text });
-          setText("");
-          setTitle("");
-        }}
-      >
-        Add Note
-      </button>
+      {openModal && (
+        <button
+          id={`remove-${index}`}
+          onClick={(e) => {
+            e.stopPropagation();
+            removeNote(date);
+          }}
+          className="remove-btn"
+          style={{
+            visibility: hovered ? "visible" : "hidden",
+          }}
+        >
+          X
+        </button>
+      )}
     </div>
   );
 }
