@@ -2,16 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import NewNote from "./NewNote";
 import Notelist from "./Notelist";
 import ModalContainer from "./ModalContainer";
+
 import "./App.css";
+import SearchBar from "./SearchBar";
 
 function App() {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const [query, setQuery] = useState("");
+  const [categoryFilters, setCategoryFilters] = useState([]);
   const isMounted = useRef(false);
 
   useEffect(() => {
     const notes = JSON.parse(localStorage.getItem("notes"));
-    console.log(notes);
     if (notes) {
       setNotes(notes);
     }
@@ -57,9 +60,14 @@ function App() {
 
   return (
     <>
+      <SearchBar query={query} setQuery={setQuery} />
       <NewNote addNoteToList={addNote}></NewNote>
       <Notelist
-        notes={notes}
+        notes={notes
+          .filter((n) => !categoryFilters.includes(n.category))
+          .filter(
+            (n) => !query || n.title.includes(query) || n.text.includes(query)
+          )}
         removeNote={removeNote}
         openModal={openModal}
       ></Notelist>
