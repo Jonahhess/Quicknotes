@@ -39,6 +39,15 @@ function App() {
     }
   }
 
+  function updateNote(note) {
+    const index = notes.findIndex((n) => n.date === note.date);
+    setNotes([
+      ...notes.slice(0, index),
+      { ...note, updatedDate: Date.now() },
+      ...notes.slice(index + 1),
+    ]);
+  }
+
   return (
     <>
       <NewNote addNoteToList={addNote}></NewNote>
@@ -49,6 +58,7 @@ function App() {
       ></Notelist>
       <ModalContainer
         selectedNote={selectedNote}
+        updateNote={updateNote}
         customStyles={customStyles}
         closeModal={closeModal}
       />
