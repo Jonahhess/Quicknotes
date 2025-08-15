@@ -8,7 +8,9 @@ export default function Filters({ categoryFilters, setCategoryFilters }) {
     >
       {categories.map((c) => (
         <div key={c}>
-          <label htmlFor={`checkbox-${c}`}>{c}</label>
+          <label htmlFor={`checkbox-${c}`}>
+            {c.charAt(0).toUpperCase() + c.slice(1)}
+          </label>
           <input
             type="checkbox"
             id={`checkbox-${c}`}
