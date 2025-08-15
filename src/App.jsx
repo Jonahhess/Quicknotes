@@ -13,7 +13,9 @@ function App() {
   }
 
   function removeNote(date) {
-    return setNotes(notes.filter((n) => n.date !== date));
+    if (confirm("are you sure you want to delete this?")) {
+      setNotes(notes.filter((n) => n.date !== date));
+    }
   }
 
   return (
