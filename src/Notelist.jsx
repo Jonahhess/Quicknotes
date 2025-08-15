@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function Notelist({ notes, removeNote }) {
+export default function Notelist({ notes, removeNote, openModal }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <div id="note-list">
@@ -11,6 +11,7 @@ export default function Notelist({ notes, removeNote }) {
           className="note floating"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
+          onClick={openModal}
         >
           <p id={`date-${index}`} className="date">
             {new Date(date).toLocaleString("default", {
