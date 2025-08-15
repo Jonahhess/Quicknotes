@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import NewNote from "./NewNote";
 import Notelist from "./Notelist";
 import ModalContainer from "./ModalContainer";
@@ -18,6 +18,24 @@ const customStyles = {
 function App() {
   const [notes, setNotes] = useState([]);
   const [selectedNote, setSelectedNote] = useState(null);
+  const isMounted = useRef(false);
+
+  useEffect(() => {
+    const notes = JSON.parse(localStorage.getItem("notes"));
+    console.log(notes);
+    if (notes) {
+      setNotes(notes);
+    }
+  }, []);
+
+  // run only after notes have been loaded from first useEffect
+  useEffect(() => {
+    if (isMounted.current) {
+      localStorage.setItem("notes", JSON.stringify(notes));
+    } else {
+      isMounted.current = true;
+    }
+  }, [notes]);
 
   function openModal(note) {
     setSelectedNote({ ...note });
