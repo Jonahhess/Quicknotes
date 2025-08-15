@@ -6,9 +6,9 @@ import "./App.css";
 function App() {
   const [notes, setNotes] = useState([]);
 
-  function addNote(text) {
+  function addNote({ title, text }) {
     if (text) {
-      setNotes([{ text, date: Date.now() }, ...notes]);
+      setNotes([{ title, text, date: Date.now() }, ...notes]);
     }
   }
 

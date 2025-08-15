@@ -4,7 +4,7 @@ export default function Notelist({ notes, removeNote }) {
   const [hoveredIndex, setHoveredIndex] = useState(null);
   return (
     <div id="note-list">
-      {notes?.map(({ text, date }, index) => (
+      {notes?.map(({ title, text, date }, index) => (
         <div
           key={date}
           id={`note-${index}`}
@@ -20,6 +20,9 @@ export default function Notelist({ notes, removeNote }) {
               minute: "numeric",
             })}
           </p>
+          <h1 className="title" id={`text-${index}`}>
+            {title}
+          </h1>
           <p className="text" id={`text-${index}`}>
             {text}
           </p>

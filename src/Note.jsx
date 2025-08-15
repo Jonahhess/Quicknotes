@@ -1,10 +1,17 @@
 import { useState } from "react";
 
 export default function Note({ addNoteToList }) {
+  const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
   return (
     <div id="new-note" className="floating">
+      <input
+        id="title"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+        placeholder="Title"
+      ></input>
       <div id="note-text">
         <textarea
           id="text"
@@ -17,8 +24,9 @@ export default function Note({ addNoteToList }) {
       <button
         id="submit"
         onClick={() => {
-          addNoteToList(text);
+          addNoteToList({ title, text });
           setText("");
+          setTitle("");
         }}
       >
         Add Note
