@@ -6,7 +6,7 @@ export default function ModalNote({ title, text, date, updateNote, category }) {
   const [newText, setNewText] = useState(text);
   const [newCategory, setNewCategory] = useState(category);
   return (
-    <div id="new-note" className="floating">
+    <div id="modal-note" className="floating">
       <input
         id="title"
         value={newTitle}
@@ -21,21 +21,21 @@ export default function ModalNote({ title, text, date, updateNote, category }) {
           onChange={(e) => setNewText(e.target.value)}
           rows="10"
         ></textarea>
-        <div id="category-container">
-          <label htmlFor="categories">Category</label>
-          <select
-            name="categories"
-            id="categories"
-            value={newCategory}
-            onChange={(e) => setNewCategory(e.target.value)}
-          >
-            {categories.map((c) => (
-              <option value={c}>
-                {c.charAt(0).toUpperCase() + c.slice(1)}
-              </option>
-            ))}
-          </select>
-        </div>
+      </div>
+      <div id="category-container">
+        <label htmlFor="categories">Category</label>
+        <select
+          name="categories"
+          id="categories"
+          value={newCategory}
+          onChange={(e) => setNewCategory(e.target.value)}
+        >
+          {categories.map((c) => (
+            <option key={c} value={c}>
+              {c.charAt(0).toUpperCase() + c.slice(1)}
+            </option>
+          ))}
+        </select>
       </div>
       <button
         id="submit"
