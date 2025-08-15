@@ -20,7 +20,7 @@ export default function ModalNote({ title, text, date, updateNote, category }) {
           placeholder="enter text"
           value={newText}
           onChange={(e) => setNewText(e.target.value)}
-          rows="30"
+          rows="20"
         ></textarea>
       </div>
       <div id="category-container">
