@@ -3,6 +3,7 @@ import Modal from "react-modal";
 
 export default function ModalContainer({
   selectedNote,
+  updateNote,
   customStyles,
   closeModal,
 }) {
@@ -20,6 +21,7 @@ export default function ModalContainer({
             title={selectedNote.title}
             text={selectedNote.text}
             date={selectedNote.date}
+            updateNote={updateNote}
           />
         </Modal>
       </div>
