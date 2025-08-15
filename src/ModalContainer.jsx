@@ -33,6 +33,7 @@ export default function ModalContainer({
             title={selectedNote.title}
             text={selectedNote.text}
             date={selectedNote.date}
+            category={selectedNote.category}
             updateNote={updateNote}
           />
         </Modal>
