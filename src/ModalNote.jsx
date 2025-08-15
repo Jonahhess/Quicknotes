@@ -1,5 +1,6 @@
 import { useState } from "react";
 import categories from "./categories";
+import colorMap from "./colorMap";
 
 export default function ModalNote({ title, text, date, updateNote, category }) {
   const [newTitle, setNewTitle] = useState(title);
@@ -29,6 +30,10 @@ export default function ModalNote({ title, text, date, updateNote, category }) {
           id="categories"
           value={newCategory}
           onChange={(e) => setNewCategory(e.target.value)}
+          style={{
+            backgroundColor: colorMap[newCategory],
+            marginLeft: "12px",
+          }}
         >
           {categories.map((c) => (
             <option key={c} value={c}>
