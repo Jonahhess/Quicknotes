@@ -1,4 +1,5 @@
 import { useState } from "react";
+import colorMap from "./colorMap";
 
 export default function Note({
   title,
@@ -11,14 +12,6 @@ export default function Note({
   openModal,
 }) {
   const [hovered, setHovered] = useState(false);
-
-  const colorMap = {
-    uncategorized: "white",
-    personal: "yellow",
-    work: "brown",
-    reminder: "red",
-    todo: "green",
-  };
 
   return (
     <div
