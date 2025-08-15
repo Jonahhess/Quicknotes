@@ -8,7 +8,7 @@ export default function Notelist({ notes, removeNote }) {
         <div
           key={date}
           id={`note-${index}`}
-          className="note"
+          className="note floating"
           onMouseEnter={() => setHoveredIndex(index)}
           onMouseLeave={() => setHoveredIndex(null)}
         >

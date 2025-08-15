@@ -4,17 +4,15 @@ export default function Note({ addNoteToList }) {
   const [text, setText] = useState("");
 
   return (
-    <>
-      <h1>Note Settings</h1>
+    <div id="new-note" className="floating">
       <div id="note-text">
-        <label htmlFor="text">Text</label>
-        <input
+        <textarea
           id="text"
-          type="text"
           placeholder="enter text"
           value={text}
           onChange={(e) => setText(e.target.value)}
-        ></input>
+          rows="10"
+        ></textarea>
       </div>
       <button
         id="submit"
@@ -25,6 +23,6 @@ export default function Note({ addNoteToList }) {
       >
         Add Note
       </button>
-    </>
+    </div>
   );
 }
