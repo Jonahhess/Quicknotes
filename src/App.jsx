@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Note from "./Note";
+import NewNote from "./NewNote";
 import Notelist from "./Notelist";
+import Note from "./Note";
 import Modal from "react-modal";
 import "./App.css";
 
@@ -20,22 +21,14 @@ Modal.setAppElement("#root");
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [modalIsOpen, setIsOpen] = useState(false);
-  const [selectedNote, setSelectedNote] = useState({});
-  let subtitle;
+  const [selectedNote, setSelectedNote] = useState(null);
 
   function openModal(note) {
     setSelectedNote({ ...note });
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
   }
 
   function closeModal() {
-    setIsOpen(false);
+    setSelectedNote(null);
   }
 
   function addNote({ title, text }) {
@@ -52,24 +45,26 @@ function App() {
 
   return (
     <>
-      <Note addNoteToList={addNote}></Note>
+      <NewNote addNoteToList={addNote}></NewNote>
       <Notelist
         notes={notes}
         removeNote={removeNote}
         openModal={openModal}
       ></Notelist>
-      {modalIsOpen && (
+      {selectedNote && (
         <div>
-          <button onClick={openModal}>Open Modal</button>
           <Modal
-            isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
+            isOpen={selectedNote}
             onRequestClose={closeModal}
             style={customStyles}
             contentLabel="Example Modal"
           >
             <button onClick={closeModal}>close</button>
-            <Notelist notes={[selectedNote]} />
+            <Note
+              title={selectedNote.title}
+              text={selectedNote.text}
+              date={selectedNote.date}
+            />
           </Modal>
         </div>
       )}
