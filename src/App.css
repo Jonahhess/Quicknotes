@@ -59,7 +59,7 @@ button {
   padding: 8px;
   margin: 8px;
   position: relative;
-  width: 150px;
+  width: 175px;
   height: 90px;
   overflow: hidden;
   padding-top: 0px;
@@ -79,4 +79,8 @@ button {
   position: absolute;
   top: 0px;
   right: 0px;
+}
+
+#modal-note {
+  width: 600px;
 }
