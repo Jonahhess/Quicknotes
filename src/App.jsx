@@ -1,8 +1,7 @@
 import { useState } from "react";
 import NewNote from "./NewNote";
 import Notelist from "./Notelist";
-import Note from "./Note";
-import Modal from "react-modal";
+import ModalContainer from "./ModalContainer";
 import "./App.css";
 
 const customStyles = {
@@ -15,9 +14,6 @@ const customStyles = {
     transform: "translate(-50%, -50%)",
   },
 };
-
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement("#root");
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -51,23 +47,11 @@ function App() {
         removeNote={removeNote}
         openModal={openModal}
       ></Notelist>
-      {selectedNote && (
-        <div>
-          <Modal
-            isOpen={selectedNote}
-            onRequestClose={closeModal}
-            style={customStyles}
-            contentLabel="Example Modal"
-          >
-            <button onClick={closeModal}>close</button>
-            <Note
-              title={selectedNote.title}
-              text={selectedNote.text}
-              date={selectedNote.date}
-            />
-          </Modal>
-        </div>
-      )}
+      <ModalContainer
+        selectedNote={selectedNote}
+        customStyles={customStyles}
+        closeModal={closeModal}
+      />
     </>
   );
 }
