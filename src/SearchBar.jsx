@@ -1,6 +1,7 @@
 export default function SearchBar({ query, setQuery }) {
   return (
-    <>
+    <div style={{ textAlign: "center" }}>
+      <strong>Search Notes: </strong>
       <input
         type="text"
         value={query}
@@ -13,6 +14,6 @@ export default function SearchBar({ query, setQuery }) {
           Clear Filter
         </button>
       )}
-    </>
+    </div>
   );
 }
