@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Note from "./Note";
 import Notelist from "./Notelist";
+import Modal from "react-modal";
 import "./App.css";
 
 function App() {
