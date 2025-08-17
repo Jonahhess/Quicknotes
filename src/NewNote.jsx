@@ -1,5 +1,6 @@
 import { useState } from "react";
 import categories from "./categories";
+import colorMap from "./colorMap";
 
 export default function NewNote({ addNoteToList }) {
   const [title, setTitle] = useState("");
@@ -30,6 +31,10 @@ export default function NewNote({ addNoteToList }) {
           id="categories"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
+          style={{
+            backgroundColor: colorMap[newCategory],
+            marginLeft: "12px",
+          }}
         >
           {categories.map((c) => (
             <option key={c} value={c}>
