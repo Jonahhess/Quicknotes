@@ -32,7 +32,7 @@ export default function NewNote({ addNoteToList }) {
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           style={{
-            backgroundColor: colorMap[newCategory],
+            backgroundColor: colorMap[category],
             marginLeft: "12px",
           }}
         >
